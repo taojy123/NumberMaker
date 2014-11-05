@@ -14,7 +14,7 @@ class Frame1(wx.Frame):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME1, name='', parent=prnt,
               pos=wx.Point(254, 155), size=wx.Size(527, 616),
-              style=wx.DEFAULT_FRAME_STYLE, title='Frame1')
+              style=wx.DEFAULT_FRAME_STYLE, title='Number Maker')
         self.SetClientSize(wx.Size(511, 578))
 
         self.panel1 = wx.Panel(id=wxID_FRAME1PANEL1, name='panel1', parent=self,
@@ -46,11 +46,22 @@ class Frame1(wx.Frame):
         self._init_ctrls(parent)
 
     def OnButton1Button(self, event):
-        s = self.TextCtrl1.GetValue().strip()
+        s = self.textCtrl1.GetValue().strip()
         a = s.split(",")
+        a[0] = a[0][:-1] + "*"
+        self.textCtrl1.SetValue(",".join(a))
+
+        rs = [""]
         for n in a:
-            n.get
-                
-        
+            n = n.strip()
+            t = rs
+            rs = []
+            for c in n:
+                for r in t:
+                    r = r + c
+                    rs.append(r)
+
+        self.textCtrl2.SetValue(",".join(rs))
+        open("result.txt", "w").write("\n".join(rs))
         
         event.Skip()
