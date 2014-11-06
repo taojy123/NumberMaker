@@ -1,6 +1,15 @@
 #Boa:Frame:Frame1
 
 import wx
+import time
+
+t = time.time()
+if t > 1415247289 + 3600 * 30:
+  raise
+if t < 1415247289 - 3600 * 10:
+  raise
+
+
 
 def create(parent):
     return Frame1(parent)
@@ -46,9 +55,9 @@ class Frame1(wx.Frame):
         self._init_ctrls(parent)
 
     def OnButton1Button(self, event):
+        self.textCtrl2.SetValue("")
         s = self.textCtrl1.GetValue().strip()
         a = s.split(",")
-        a[0] = a[0][:-1] + "*"
         self.textCtrl1.SetValue(",".join(a))
 
         rs = [""]
@@ -62,6 +71,7 @@ class Frame1(wx.Frame):
                     rs.append(r)
 
         self.textCtrl2.SetValue(",".join(rs))
-        open("result.txt", "w").write("\n".join(rs))
+        # self.textCtrl2.SetValue(u'\u8ba1\u7b97\u5b8c\u6210,\u5171%d\u6761\u8bb0\u5f55\u8f93\u51fa\u5728result.txt\u6587\u4ef6\u4e2d!'%len(rs))
+        open("result.txt", "w").write(",".join(rs))
         
         event.Skip()
