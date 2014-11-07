@@ -3,11 +3,11 @@
 import wx
 import time
 
-t = time.time()
-if t > 1415247289 + 3600 * 30:
-  raise
-if t < 1415247289 - 3600 * 10:
-  raise
+# t = time.time()
+# if t > 1415247289 + 3600 * 30:
+#   raise
+# if t < 1415247289 - 3600 * 10:
+#   raise
 
 
 
@@ -72,6 +72,6 @@ class Frame1(wx.Frame):
 
         self.textCtrl2.SetValue(",".join(rs))
         # self.textCtrl2.SetValue(u'\u8ba1\u7b97\u5b8c\u6210,\u5171%d\u6761\u8bb0\u5f55\u8f93\u51fa\u5728result.txt\u6587\u4ef6\u4e2d!'%len(rs))
-        open("result.txt", "w").write(",".join(rs))
+        # open("result.txt", "w").write(",".join(rs))
         
         event.Skip()
